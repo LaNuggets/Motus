@@ -13,7 +13,7 @@ public class Game {
         this.word = word;
     }
 
-    public String chooseLettre(){
+    public String chooseWord(){
         String word;
         String regex =".*\\d.*";
         Pattern pattern = Pattern.compile(regex);
@@ -38,7 +38,7 @@ public class Game {
     public void play(int life){
         System.out.println(STR."Le mot que vous chercher contien \{this.wordLength} lettre");
         while(life>0){
-            String word = this.chooseLettre();
+            String word = this.chooseWord();
             System.out.println(word);
             if(this.checkLetter(word)){
                 //Fonction print le mot
