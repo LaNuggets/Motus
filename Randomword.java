@@ -22,6 +22,19 @@ public class Randomword {
 
         return words;
     }
+
+    public static String pickWords( int wordLength) {
+        ArrayList<String> words = Randomword.pickWordsByLength("Motus/Mots.txt", wordLength);
+        String randomWord = "";
+        if (words.isEmpty()) {
+            System.out.println("No words of length " + wordLength + " found.");
+        } else {
+            Random rand = new Random();
+            int randomIndex = rand.nextInt(words.size());
+            randomWord = words.get(randomIndex);
+        }
+        return randomWord;
+    }
 }
 
 
