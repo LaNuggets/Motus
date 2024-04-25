@@ -20,8 +20,6 @@ Pizza
 Licorne
 Crayon
 Elephant
-Arc-en-ciel
-Basket-ball
 Serpent
 Banane
 Fusee
@@ -66,7 +64,6 @@ Ballon
 Serre
 Sablier
 Tableau
-Serre-livre
 Marteau
 Tourbillon
 Saule
@@ -86,12 +83,10 @@ Horloge
 Miroir
 Ecureuil
 Biscuit
-Lunettes de soleil
 Marionnette
 Carrousel
 Pyramide
 Glacon
-Etoile filante
 Statue
 Balancoire
 Horloge
