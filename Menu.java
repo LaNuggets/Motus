@@ -1,3 +1,5 @@
+package Motus;
+
 import java.util.Scanner;
 
 class Menu {
