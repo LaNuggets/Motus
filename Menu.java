@@ -15,7 +15,7 @@ class Menu {
         Scanner sc = new Scanner(System.in);
         while(true){
             maxLength = sc.nextInt();
-            if(maxLength >=4 &&maxLength <= 12){
+            if(maxLength >=4 &&maxLength <= 11){
                 break;
             } else {
                 System.out.println("Please enter a word length between 4 and 12");
