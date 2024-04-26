@@ -1,4 +1,3 @@
-package Motus;
 import java.awt.*;
 import java.util.Random;
 
