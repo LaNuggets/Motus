@@ -3,6 +3,8 @@ class Main {
         Menu menu = new Menu();
         menu.display();
         int wordLength = menu.wordLength();
-        int life = menu.numberOfTry();
+        Randomword rand = new Randomword();
+        System.out.println(rand.pickWords(wordLength));
+        menu.numberOfTry();
     }
 }
