@@ -12,7 +12,7 @@ class Menu {
     }
 
     public int wordLength(){
-        String regex = "^[0-9]$";
+        String regex = "^[0-9]|1[0-1]$";
         Pattern pattern = Pattern.compile(regex);
         int maxLengthInt = 0;
         System.out.println("Please enter a word length:");
@@ -22,17 +22,18 @@ class Menu {
             Matcher matcher = pattern.matcher(maxLength);
             if (matcher.matches()){
                 maxLengthInt = Integer.parseInt(maxLength);
-                if(maxLengthInt >=4 && maxLengthInt <= 11){
+                if(maxLengthInt >= 0 && maxLengthInt <= 11){
                     break;
                 } else {
-                    System.out.println("Please enter a word length between 4 and 11");
+                    System.out.println("Please enter a word length between 0 and 11");
                 }
             } else {
-                System.out.println("Please enter a number between 0 and 9");
+                System.out.println("Please enter a number between 0 and 11");
             }
         }
         return maxLengthInt;
     }
+
 
     public int numberOfTry(){
         String regex = "^[0-9]$";
