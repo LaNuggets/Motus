@@ -7,7 +7,7 @@ public class Game {
     int wordLength;
     String word;
 
-    public Game(int wordLength, int numberOfTry, String word){
+    public Game(int numberOfTry, int wordLength, String word){
         this.wordLength = wordLength;
         this.numberOfTry = numberOfTry;
         this.word = word;
@@ -48,13 +48,15 @@ public class Game {
             }
         }
     }
-
-    StringBuilder trait = new StringBuilder();
-        trait.append("===================\n");
-        for (int i = 0; i < randomWord.length(); i++) {
-        trait.append("| _ ");
-    }
-        trait.append("|\n");
-        trait.append("===================");
-        System.out.println("Mot à deviner : \n" + trait.toString());
+        public String hiddenWord() {
+            StringBuilder trait = new StringBuilder();
+            trait.append("===================\n");
+            for (int i = 0; i < this.wordLength; i++) {
+                trait.append("| _ ");
+            }
+            trait.append("|\n");
+            trait.append("===================");
+            System.out.println("Mot à deviner : \n" + trait.toString());
+            return trait.toString();
+        }
 }

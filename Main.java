@@ -5,8 +5,12 @@ class Main {
         Menu menu = new Menu();
         menu.display();
         int wordLength = menu.wordLength();
+        System.out.println("Word length: " + wordLength);
         Randomword rand = new Randomword();
-        System.out.println(rand.pickWords(wordLength));
-        menu.numberOfTry();
+        String chosenWord = Randomword.pickWords(wordLength);
+        int life = menu.numberOfTry();
+        Game game = new Game(life, wordLength, chosenWord);
+        game.hiddenWord();
+       String essai = game.guessedWord();
     }
 }

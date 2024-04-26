@@ -1,5 +1,3 @@
-package Motus;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,7 +23,7 @@ public class Randomword {
         return words;
     }
 
-    public static String pickWords( int wordLength) {
+    public static String pickWords(int wordLength) {
         ArrayList<String> words = Randomword.pickWordsByLength("Motus/Mots.txt", wordLength);
         String randomWord = "";
         if (words.isEmpty()) {
