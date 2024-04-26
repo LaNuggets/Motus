@@ -62,26 +62,26 @@ public class Game {
 
 public String letterMatch(String randomWord, String userWord) {
     Scanner scanner = new Scanner(System.in);
-    String ANSI_GREEN = "\u001B[32m";
-    String ANSI_RED = "\u001B[31m";
-    String ANSI_ORANGE = "\u001B[33m";
+    String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+    String ANSI_RED_BACKGROUND = "\u001B[41m";
+    String ANSI_ORANGE_BACKGROUND = "\u001B[43m";
     String ANSI_RESET = "\u001B[0m";
 
     while (!userWord.equals(randomWord)) {
         StringBuilder trait = new StringBuilder();
-        trait.append("===================\n");
+        trait.append("=========================\n");
         for (int i = 0; i < this.wordLength; i++) {
             char userLetter = userWord.charAt(i);
             if (randomWord.charAt(i) == userLetter) {
-                trait.append("| " + ANSI_GREEN + userLetter + ANSI_RESET + " "); // vrai
+                trait.append("| " + ANSI_GREEN_BACKGROUND + " "+ userLetter+ " " + ANSI_RESET + " "); // vrai
             } else if (randomWord.contains(String.valueOf(userLetter))) {
-                trait.append("| " + ANSI_ORANGE + userLetter + ANSI_RESET + " "); // faux mais présent
+                trait.append("| " + ANSI_ORANGE_BACKGROUND + " "+ userLetter+ " " + ANSI_RESET + " "); // faux mais présent
             } else {
-                trait.append("| " + ANSI_RED + userLetter + ANSI_RESET + " "); // faux
+                trait.append("| " + ANSI_RED_BACKGROUND + " "+ userLetter+ " " + ANSI_RESET + " "); // faux
             }
         }
         trait.append("|\n");
-        trait.append("===================");
+        trait.append("=========================");
         System.out.println("Mot à deviner : \n" + trait.toString());
 
         System.out.println("Veuillez entrer un nouveau mot :");
