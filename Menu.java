@@ -8,11 +8,11 @@ class Menu {
     }
 
     public void display(){
-        System.out.println("Welcome to Motus");
+        System.out.println("Welcome to Motus game");
     }
 
     public int wordLength(){
-        String regex = "^[0-9]$";
+        String regex = "^[0-9]|1[0-1]$";
         Pattern pattern = Pattern.compile(regex);
         int maxLengthInt = 0;
         System.out.println("Please enter a word length:");
@@ -28,14 +28,14 @@ class Menu {
                     System.out.println("Please enter a word length between 4 and 11");
                 }
             } else {
-                System.out.println("Please enter a number between 0 and 9");
+                System.out.println("Please enter a number between 4 and 11");
             }
         }
         return maxLengthInt;
     }
 
     public int numberOfTry(){
-        String regex = "^[0-9]$";
+        String regex = "^[0-9]|1[0-1]$";
         Pattern pattern = Pattern.compile(regex);
         int lifeInt = 0;
         System.out.println("Please enter number of try you want:");
@@ -51,7 +51,7 @@ class Menu {
                     System.out.println("Your number of try must be between 1 and 7");
                 }
             } else {
-                System.out.println("Please enter a number between 0 and 9");
+                System.out.println("Please enter a number between 1 and 7");
             }
         }
         return lifeInt;
