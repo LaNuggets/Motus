@@ -18,14 +18,14 @@ public class Game {
         String regex =".*\\d.*";
         Pattern pattern = Pattern.compile(regex);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Veuillez entrer un mot :");
+        System.out.println("Please enter a word:");
         while(true){
             word = sc.nextLine();
             Matcher matcher = pattern.matcher(word);
             if(!matcher.matches() && word.length() == wordLength){
                     break;
             }else{
-                System.out.println(STR."Veuillez entrer un mot de \{this.wordLength} lettre :");
+                System.out.println(STR." Please enter a word \{this.wordLength} letter :");
             }
         }
         return word;
@@ -36,7 +36,7 @@ public class Game {
     }
 
     public void play(int life){
-        System.out.println(STR."Le mot que vous chercher contien \{this.wordLength} lettre");
+        System.out.println(STR." The word you are looking for contains \{this.wordLength} letter");
         while(life>0){
             String word = this.guessedWord();
             System.out.println(word);
@@ -56,7 +56,7 @@ public class Game {
             }
             trait.append("|\n");
             trait.append("===================");
-            System.out.println("Mot à deviner : \n" + trait.toString());
+            System.out.println(" Word to guess : \n" + trait.toString());
             return trait.toString();
         }
 }
