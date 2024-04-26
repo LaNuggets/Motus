@@ -5,5 +5,6 @@ class Main {
         int wordLength = menu.wordLength();
         Randomword rand = new Randomword();
         System.out.println(rand.pickWords(wordLength));
+        menu.numberOfTry();
     }
 }
