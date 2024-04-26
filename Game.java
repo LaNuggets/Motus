@@ -57,7 +57,7 @@ public class Game {
         }
         trait.append("|\n");
         trait.append("===================");
-        System.out.println("Mot à deviner : \n" + trait.toString());
+        System.out.println("Word  to guess : \n" + trait.toString());
         return trait.toString();
     }
 }
