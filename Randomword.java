@@ -7,21 +7,35 @@ import java.util.Random;
 
 public class Randomword {
 
-    public static String pickRandomWord(String filePath) {
+    public static ArrayList<String> pickWordsByLength(String filePath, int length) {
         ArrayList<String> words = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                words.add(line);
+                if (line.trim().length() == length) {
+                    words.add(line.trim());
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Random rand = new Random();
-        int randomIndex = rand.nextInt(words.size());
-        return words.get(randomIndex);
+        return words;
+    }
+
+    public static String pickWords( int wordLength) {
+        ArrayList<String> words = Randomword.pickWordsByLength("Motus/Mots.txt", wordLength);
+        String randomWord = "";
+        if (words.isEmpty()) {
+            System.out.println("No words of length " + wordLength + " found.");
+        } else {
+            Random rand = new Random();
+            int randomIndex = rand.nextInt(words.size());
+            randomWord = words.get(randomIndex);
+        }
+        return randomWord;
     }
 }
+
 
