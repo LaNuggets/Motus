@@ -15,41 +15,40 @@ public class Game {
 
     public String guessedWord(){
         String word;
-        String regex ="[^a-zA-Z]";
+        String regex =".*\\d.*";
         Pattern pattern = Pattern.compile(regex);
         Scanner sc = new Scanner(System.in);
         System.out.println("Veuillez entrer un mot :");
         while(true){
             word = sc.nextLine();
             Matcher matcher = pattern.matcher(word);
-            if(!matcher.matches() && word.length() == this.wordLength){
+            if(!matcher.matches() && word.length() == wordLength){
                 break;
             }else{
                 System.out.println(STR."Veuillez entrer un mot de \{this.wordLength} lettre :");
             }
         }
-        return word.toLowerCase();
+        return word;
+    }
+
+    public boolean checkLetter(String Letter){
+        return this.word.toLowerCase().contains(Letter.toLowerCase());
     }
 
     public void play(int life){
-        this.hiddenWord();
-        String userWord = this.guessedWord().toLowerCase();
-        String wordToGuess = this.word.toLowerCase();
-        userWord = this.letterMatch(wordToGuess,userWord);
-        life--;
-        while(life>0 || userWord.equals(wordToGuess)){
-            life--;
-            userWord = this.guessedWord().toLowerCase();
-            userWord = this.letterMatch(wordToGuess,userWord);
+        System.out.println(STR."Le mot que vous chercher contien \{this.wordLength} lettre");
+        while(life>0){
+            String word = this.guessedWord();
+            System.out.println(word);
+            if(this.checkLetter(word)){
+                //Fonction print le mot
+            }else {
+                //Fonction print le mot
+                life--;
             }
-        if (life == 0){
-            System.out.println("You lose !");
-        }else {
-            System.out.println("You win !");
         }
     }
-
-    public void hiddenWord() {
+    public String hiddenWord() {
         StringBuilder trait = new StringBuilder();
         trait.append("===================\n");
         for (int i = 0; i < this.wordLength; i++) {
@@ -57,13 +56,15 @@ public class Game {
         }
         trait.append("|\n");
         trait.append("===================");
-        System.out.println("Word  to guess : \n" + trait.toString());
+        System.out.println("Mot à deviner : \n" + trait.toString());
+        return trait.toString();
     }
 
     public String letterMatch(String randomWord, String userWord) {
         Scanner scanner = new Scanner(System.in);
         String ANSI_GREEN = "\u001B[32m";
         String ANSI_RED = "\u001B[31m";
+        String ANSI_ORANGE = "\u001B[33m";
         String ANSI_RESET = "\u001B[0m";
 
             StringBuilder trait = new StringBuilder();
@@ -72,6 +73,8 @@ public class Game {
                 char userLetter = userWord.charAt(i);
                 if (randomWord.charAt(i) == userLetter) {
                     trait.append("| " + ANSI_GREEN + userLetter + ANSI_RESET + " "); // vrai
+                } else if (randomWord.contains(String.valueOf(userLetter))) {
+                    trait.append("| " + ANSI_ORANGE + userLetter + ANSI_RESET + " "); // faux mais présent
                 } else {
                     trait.append("| " + ANSI_RED + userLetter + ANSI_RESET + " "); // faux
                 }
@@ -81,5 +84,6 @@ public class Game {
             System.out.println("Mot à deviner : \n" + trait.toString());
         return userWord;
     }
+
 
 }
