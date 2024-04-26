@@ -23,7 +23,7 @@ public class Game {
             word = sc.nextLine();
             Matcher matcher = pattern.matcher(word);
             if(!matcher.matches() && word.length() == wordLength){
-                    break;
+                break;
             }else{
                 System.out.println(STR."Veuillez entrer un mot de \{this.wordLength} lettre :");
             }
@@ -48,44 +48,44 @@ public class Game {
             }
         }
     }
-        public String hiddenWord() {
-            StringBuilder trait = new StringBuilder();
-            trait.append("===================\n");
-            for (int i = 0; i < this.wordLength; i++) {
-                trait.append("| _ ");
-            }
-            trait.append("|\n");
-            trait.append("===================");
-            System.out.println("Mot à deviner : \n" + trait.toString());
-            return trait.toString();
-        }
-
-public String letterMatch(String randomWord, String userWord) {
-    Scanner scanner = new Scanner(System.in);
-    String ANSI_GREEN = "\u001B[32m";
-    String ANSI_RED = "\u001B[31m";
-    String ANSI_RESET = "\u001B[0m";
-
-    while (!userWord.equals(randomWord)) {
+    public String hiddenWord() {
         StringBuilder trait = new StringBuilder();
         trait.append("===================\n");
         for (int i = 0; i < this.wordLength; i++) {
-            char userLetter = userWord.charAt(i);
-            if (randomWord.charAt(i) == userLetter) {
-                trait.append("| " + ANSI_GREEN + userLetter + ANSI_RESET + " "); // vrai
-            } else {
-                trait.append("| " + ANSI_RED + userLetter + ANSI_RESET + " "); // faux
-            }
+            trait.append("| _ ");
         }
         trait.append("|\n");
         trait.append("===================");
         System.out.println("Mot à deviner : \n" + trait.toString());
-
-        System.out.println("Veuillez entrer un nouveau mot :");
-        userWord = scanner.nextLine();
+        return trait.toString();
     }
-    return userWord;
-}
+
+    public String letterMatch(String randomWord, String userWord) {
+        Scanner scanner = new Scanner(System.in);
+        String ANSI_GREEN = "\u001B[32m";
+        String ANSI_RED = "\u001B[31m";
+        String ANSI_RESET = "\u001B[0m";
+
+        while (!userWord.equals(randomWord)) {
+            StringBuilder trait = new StringBuilder();
+            trait.append("===================\n");
+            for (int i = 0; i < this.wordLength; i++) {
+                char userLetter = userWord.charAt(i);
+                if (randomWord.charAt(i) == userLetter) {
+                    trait.append("| " + ANSI_GREEN + userLetter + ANSI_RESET + " "); // vrai
+                } else {
+                    trait.append("| " + ANSI_RED + userLetter + ANSI_RESET + " "); // faux
+                }
+            }
+            trait.append("|\n");
+            trait.append("===================");
+            System.out.println("Mot à deviner : \n" + trait.toString());
+
+            System.out.println("Veuillez entrer un nouveau mot :");
+            userWord = scanner.nextLine();
+        }
+        return userWord;
+    }
 
 
 }
