@@ -1,6 +1,8 @@
 package Motus;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class Menu {
 
@@ -8,36 +10,52 @@ class Menu {
     }
 
     public void display(){
-        System.out.println("Welcome to Motus");
+        System.out.println("Welcome to Motus game");
     }
 
     public int wordLength(){
-        int maxLength = 0;
+        String regex = "^[0-9]|1[0-1]$";
+        Pattern pattern = Pattern.compile(regex);
+        int maxLengthInt = 0;
         System.out.println("Please enter a word length:");
         Scanner sc = new Scanner(System.in);
         while(true){
-            maxLength = sc.nextInt();
-            if(maxLength >=4 &&maxLength <= 11){
-                break;
+            String maxLength = sc.nextLine();
+            Matcher matcher = pattern.matcher(maxLength);
+            if (matcher.matches()){
+                maxLengthInt = Integer.parseInt(maxLength);
+                if(maxLengthInt >=4 && maxLengthInt <= 11){
+                    break;
+                } else {
+                    System.out.println("Please enter a word length between 4 and 11");
+                }
             } else {
-                System.out.println("Please enter a word length between 4 and 11");
+                System.out.println("Please enter a number between 4 and 11");
             }
         }
-        return maxLength;
+        return maxLengthInt;
     }
 
     public int numberOfTry(){
-        int life = 0;
+        String regex = "^[0-9]|1[0-1]$";
+        Pattern pattern = Pattern.compile(regex);
+        int lifeInt = 0;
         System.out.println("Please enter number of try you want:");
         Scanner sc = new Scanner(System.in);
         while(true){
-            life = sc.nextInt();
-            if(life<=7 && life>=1){
-                break;
+            String life = sc.nextLine();
+            Matcher matcher = pattern.matcher(life);
+            if (matcher.matches()){
+                lifeInt = Integer.parseInt(life);
+                if(lifeInt <= 7 && lifeInt >= 1){
+                    break;
+                } else {
+                    System.out.println("Your number of try must be between 1 and 7");
+                }
             } else {
-                System.out.println("Your number of try must be between 1 and 7");
+                System.out.println("Please enter a number between 1 and 7");
             }
         }
-        return life;
+        return lifeInt;
     }
 }
