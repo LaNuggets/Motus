@@ -20,7 +20,7 @@ class Menu {
             if(maxLength >=4 &&maxLength <= 11){
                 break;
             } else {
-                System.out.println("Please enter a word length between 4 and 12");
+                System.out.println("Please enter a word length between 4 and 11");
             }
         }
         return maxLength;
