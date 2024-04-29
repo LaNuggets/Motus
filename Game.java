@@ -44,6 +44,7 @@ public class Game {
         }
         if (life == 0){
             System.out.println("You lose !");
+            System.out.println(STR."The word was \{wordToGuess}");
         }else {
             System.out.println("You win !");
         }
