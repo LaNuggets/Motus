@@ -1,5 +1,7 @@
+
+
 class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Menu menu = new Menu();
         menu.display();
         int wordLength = menu.wordLength();
@@ -8,5 +10,5 @@ class Main {
         int life = menu.numberOfTry();
         Game game = new Game(life, wordLength, chosenWord);
         game.play(life);
-    }
+  }
 }

@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Game {
     int numberOfTry;
@@ -30,23 +32,37 @@ public class Game {
         }
         return word.toLowerCase();
     }
-
     public void play(int life){
         this.hiddenWord();
-        String userWord = this.guessedWord().toLowerCase();
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            int second = 10;
+            public void run() {
+                if (second > 0){
+//                    System.out.print(STR."\rTime remining \{second}");
+                    second --;
+                }else {
+                    System.out.println("\rTime's up! You lose!");
+                    timer.cancel();
+                    System.exit(0);
+                }
+            }
+        },0, 1000);
+        String userWord = this.guessedWord();
         String wordToGuess = this.word.toLowerCase();
         userWord = this.letterMatch(wordToGuess,userWord);
         life--;
-        while(life>0 || userWord.equals(wordToGuess)){
+        while(!userWord.equals(wordToGuess) && life > 0){
             life--;
             userWord = this.guessedWord().toLowerCase();
             userWord = this.letterMatch(wordToGuess,userWord);
         }
+        timer.cancel();
         if (life == 0){
             System.out.println("You lose !");
             System.out.println(STR."The word was \{wordToGuess}");
         }else {
-            System.out.println("You win !");
+            System.out.println("You win!");
         }
     }
 
