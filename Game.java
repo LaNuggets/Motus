@@ -78,7 +78,6 @@ public class Game {
     }
 
     public String letterMatch(String randomWord, String userWord) {
-        Scanner scanner = new Scanner(System.in);
         String ANSI_GREEN_BACKGROUND = "\u001B[42m";
         String ANSI_RED_BACKGROUND = "\u001B[41m";
         String ANSI_ORANGE_BACKGROUND = "\u001B[43m";
@@ -86,16 +85,31 @@ public class Game {
 
         StringBuilder trait = new StringBuilder();
         trait.append("===================\n");
-        for (int i = 0; i < this.wordLength; i++) {
+
+        boolean[] alreadyMatched = new boolean[randomWord.length()]; // Tableau pour suivre les lettres déjà trouvées
+
+        for (int i = 0; i < userWord.length(); i++) {
             char userLetter = userWord.charAt(i);
-            if (randomWord.charAt(i) == userLetter) {
-                trait.append("| " + ANSI_GREEN_BACKGROUND + userLetter + ANSI_RESET + " "); // vrai
-            } else if (randomWord.contains(String.valueOf(userLetter))) {
-                trait.append("| " + ANSI_ORANGE_BACKGROUND + userLetter + ANSI_RESET + " "); // faux mais présent
-            } else {
-                trait.append("| " + ANSI_RED_BACKGROUND + userLetter + ANSI_RESET + " "); // faux
+            boolean matched = false;
+
+            for (int j = 0; j < randomWord.length(); j++) {
+                if (userLetter == randomWord.charAt(j) && !alreadyMatched[j]) {
+                    if (i == j) {
+                        trait.append("| " + ANSI_GREEN_BACKGROUND + userLetter + ANSI_RESET + " "); // lettre correctement placée
+                    } else {
+                        trait.append("| " + ANSI_ORANGE_BACKGROUND + userLetter + ANSI_RESET + " "); // lettre mal placée
+                    }
+                    alreadyMatched[j] = true;
+                    matched = true;
+                    break;
+                }
+            }
+
+            if (!matched) {
+                trait.append("| " + ANSI_RED_BACKGROUND + userLetter + ANSI_RESET + " "); // lettre non présente
             }
         }
+
         trait.append("|\n");
         trait.append("===================");
         System.out.println("Word to guess: \n" + trait.toString());
